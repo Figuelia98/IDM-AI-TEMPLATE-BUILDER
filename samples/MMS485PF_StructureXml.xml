@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<M3OutDocument>
+  <Metadata>
+    <ZZCONO Label="Company">100</ZZCONO>
+    <ZZDIVI Label="User division">FDS</ZZDIVI>
+    <ZZDATE Label="Start date">2026-04-16</ZZDATE>
+    <ZZTIME Label="Start time">21:21:28</ZZTIME>
+    <ZZUSER Label="User">YFIGUELIA</ZZUSER>
+    <ZZBJNO Label="Job no">888082040674843155</ZZBJNO>
+    <ZZPRTF Label="Printer file">MMS485PF</ZZPRTF>
+    <ZZFILE Label="File name">888082040674843155MMS485PF_10</ZZFILE>
+    <ZZSIID Label="Service ID">M3_IDM_XML</ZZSIID></Metadata>
+  <DataArea>
+    <Document>
+      <ZZPRTF Label="Fichier imp">MMS485PF</ZZPRTF>
+      <ZZXMLT Label="Variante">01</ZZXMLT>
+      <ZZXMLD Label="Descr var XML">Etiquette transport Odette</ZZXMLD>
+      <ZZCSVN Label="Version pays">FR</ZZCSVN>
+      <Formatting>
+        <M3StandardFormatVersion>1</M3StandardFormatVersion>
+        <ReportLayout>DELTAPLUS_01-01</ReportLayout>
+        <Structure>DELTAPLUS_01-01</Structure>
+        <PaperSize>A4</PaperSize>
+        <Watermark>TRN</Watermark>
+        <Localization>
+          <DocumentDivision>FDS</DocumentDivision>
+          <CountryVersion>FR</CountryVersion>
+          <BaseCountry>FR</BaseCountry>
+          <FromToCountry>FR</FromToCountry>
+          <DocumentLanguage>FR</DocumentLanguage>
+          <Locale>fr-FR</Locale>
+          <DateFormat>DDMMYY</DateFormat>
+          <DecimalFormat>,</DecimalFormat>
+          <ThousandSeparator>.</ThousandSeparator>
+          <DebitCode>D</DebitCode>
+          <CreditCode>C</CreditCode></Localization>
+        <DocumentInformation>
+          <DebitCreditCodeUsed>true</DebitCreditCodeUsed></DocumentInformation></Formatting>
+      <Header Label="En-tête">
+        <CCPHNO Label="N° téléphone 1">+33(0)490742033</CCPHNO>
+        <CCCWEB Label="Site Web entrep"></CCCWEB>
+        <Address Label="Adresse division" Type="Company">
+          <VFCUNM>DELTA PLUS SERVICES</VFCUNM>
+          <VFADR1>ZAC la Peyrolière</VFADR1>
+          <VFADR2>BP140</VFADR2>
+          <VFADR3></VFADR3>
+          <VFADR4>APT Cedex</VFADR4></Address></Header>
+      <DocumentHeader Label="En-tête de document">
+        <UDDLIX Label="N° avis">5478</UDDLIX>
+        <UDDLDT Label="Date">2026-04-16</UDDLDT>
+        <UDITNO Label="Nº pièce fourni">GLFBN4UD01NA10</UDITNO>
+        <UDITDS Label="Désignation">FBN49</UDITDS>
+        <UDADDE Label="Quai/porte"></UDADDE>
+        <UDSUNO Label="Fournisseur (V)">ACDI003</UDSUNO>
+        <UDSHNM Label="Adresse fournis">DELTA PLUS SERVICE SAS</UDSHNM>
+        <UDNEWE Label="Poids net (Kg)">14.520</UDNEWE>
+        <UDGRWE Label="Poids brut (KG)">15.360</UDGRWE>
+        <UDDLQA Label="Quantité (Q)">1</UDDLQA>
+        <UDALUN Label="Unité remplac">CRT</UDALUN>
+        <UDAMKO Label="Nb boites">1</UDAMKO>
+        <UDBANO Label="N° lot (H)">999</UDBANO>
+        <UDPANR Label="De série">1283</UDPANR>
+        <UDECVE Label="OMT"></UDECVE>
+        <UDPOPN Label="N° pièce (P)"></UDPOPN>
+        <UDDLMO Label="Marque march">S1283</UDDLMO>
+        <UDCUNM Label="Destinataire">ACDIS FRANCE</UDCUNM>
+        <Custom>
+          <CTTX40 Label="Désignation">France</CTTX40>
+          <AOADR1 Label="Ligne adr 1">ZAC la Peyrolière</AOADR1>
+          <AOADR2 Label="Adresse 2">BP140</AOADR2>
+          <AOADR3 Label="Adresse 3">84405 APT</AOADR3>
+          <AOADR4 Label="Adresse 4">France</AOADR4>
+          <QOROUT Label="Tournée">F0SCME</QOROUT>
+          <QODLIX Label="N° livraison">5478</QODLIX>
+          <PIPLRI Label="Numéro">       623</PIPLRI>
+          <QORIDN Label="Numéro d’ordre">1000002145</QORIDN>
+          <OQNAME Label="Nom"></OQNAME>
+          <F1A121 Label="Alphanum 120">ACDIS FRANCE</F1A121>
+          <QOPONO Label="Code postal">83130</QOPONO>
+          <QOEDES Label="Lieu">FR83</QOEDES>
+          <ROPANR Label="Numéro de colis">1283</ROPANR>
+          <ROSSCC Label="Numéro SSCC">312345601000030932</ROSSCC>
+          <QOCSCD Label="Pays">FR</QOCSCD>
+          <QOWHLO Label="Dépôt">WF0</QOWHLO>
+          <VFPONO>83</VFPONO>
+          <VFRIDN>1000002145</VFRIDN>
+          <ZZLABL Label="Expéditeur">Expéditeur</ZZLABL>
+          <ZZLABL Label="N° livraison">N° livraison</ZZLABL>
+          <ZZLABL Label="Commentaire">Commentaire</ZZLABL>
+          <ZZLABL Label="Destinataire">Destinataire</ZZLABL>
+          <ZZLABL Label="Vague N°">Vague N°</ZZLABL>
+          <ZZLABL Label="N° Cmde">N° Cmde</ZZLABL>
+          <ZZLABL Label="Votre N° Cmde">Votre N° Cmde</ZZLABL>
+          <ZZLABL Label="N° colis">N° colis</ZZLABL>
+          <VFCUOR>TEST PALETTE</VFCUOR>
+          <VFLNCD>FR</VFLNCD>
+          <MWWHNM Label="Désignation">STOCK APT</MWWHNM>
+          <OBORNO Label="N° CDV">1000002145</OBORNO>
+          <OBCUNO Label="Client">1000002067</OBCUNO>
+          <OQCUA1 Label="Ligne adr 1"></OQCUA1>
+          <URRIDN Label="Numéro d’ordre">1000002145</URRIDN>
+          <OACUOR Label="N° cmde client">TEST PALETTE</OACUOR>
+          <OAWHLO Label="Dépôt">WF0</OAWHLO>
+          <OACUNO Label="Client">1000002067</OACUNO>
+          <OKCUA1 Label="Ligne adr 1">ZI TOULON EST</OKCUA1>
+          <OKCUA2 Label="Adresse 2">165 AVENUE CHARLES MARIE BRUN</OKCUA2>
+          <OKCUA3 Label="Adresse 3"></OKCUA3>
+          <OKCUA4 Label="Adresse 4">LA GARDE</OKCUA4>
+          <OKPONO Label="Code postal">83130</OKPONO>
+          <OKCSCD Label="Pays">FR</OKCSCD>
+          <OKECAR Label="Région"></OKECAR>
+          <OKTOWN Label="Ville"></OKTOWN>
+          <OKCUNM Label="Nom">ACDIS FRANCE</OKCUNM>
+          <OATEL2 Label="Texte condit."></OATEL2>
+          <OATEDL Label="Cond. livraison">DAP</OATEDL>
+          <CTPARM Label="Val paramètre">1001FR EU                           EUR02  00001000000   100</CTPARM>
+          <VFKFLD>00</VFKFLD>
+          <VFISOD>FR</VFISOD>
+          <CKTX15 Label="Nom">.</CKTX15>
+          <OADECU Label="Client livraisn">1000002067</OADECU>
+          <VFSSCC>(00)312345601000030932</VFSSCC></Custom>
+        <CustomLines Label="Bloc de texte">
+          <U1RIDN Label="N° ordre"></U1RIDN>
+          <CustomTextBlock Label="Bloc de texte">
+            <U1RIDN>1000002145</U1RIDN></CustomTextBlock></CustomLines>
+        <CustomLines KFLD="IE">
+          <AddressFormatRulesHead KFLD="IE">
+            <CustomLines>
+              <CLTX60 Label="Texte"></CLTX60>
+              <AddressFormatRulesLine>
+                <CLTX60>Ireland does not use postcodes unless in the city of Dublin.</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>Examples of Addresses :</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>Athlone</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>Co. Westmeath, Ireland</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>Ballyragget</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>Co. Kilkenny, Ireland</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>Dublin 4</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>Ireland</CLTX60></AddressFormatRulesLine></CustomLines></AddressFormatRulesHead>
+          <AddressFormatRulesHead KFLD="00">
+            <CustomLines>
+              <CLTX60 Label="Texte"></CLTX60>
+              <AddressFormatRulesLine>
+                <CLTX60>Using the same codification as in fields CSYADF.CXADED and</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>CSYADF.CXADE4, display:</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;3 &amp;1</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;4</CLTX60></AddressFormatRulesLine></CustomLines></AddressFormatRulesHead>
+          <AddressFormatRulesHead KFLD="01">
+            <CustomLines>
+              <CLTX60 Label="Texte"></CLTX60>
+              <AddressFormatRulesLine>
+                <CLTX60>Using the same codification as in fields CSYADF.CXADED and</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>CSYADF.CXADE4, display:</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;3 &amp;1</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;6 &amp;4</CLTX60></AddressFormatRulesLine></CustomLines></AddressFormatRulesHead>
+          <AddressFormatRulesHead KFLD="02">
+            <CustomLines>
+              <CLTX60 Label="Texte"></CLTX60>
+              <AddressFormatRulesLine>
+                <CLTX60>Using the same codification as in fields CSYADF.CXADED and</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>CSYADF.CXADE4, display:</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;1 &amp;2 &amp;3</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;4</CLTX60></AddressFormatRulesLine></CustomLines></AddressFormatRulesHead>
+          <AddressFormatRulesHead KFLD="03">
+            <CustomLines>
+              <CLTX60 Label="Texte"></CLTX60>
+              <AddressFormatRulesLine>
+                <CLTX60>Using the same codification as in fields CSYADF.CXADED and</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>CSYADF.CXADE4, display:</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;1 &amp;3</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;4</CLTX60></AddressFormatRulesLine></CustomLines></AddressFormatRulesHead>
+          <AddressFormatRulesHead KFLD="04">
+            <CustomLines>
+              <CLTX60 Label="Texte"></CLTX60>
+              <AddressFormatRulesLine>
+                <CLTX60>Using the same codification as in fields CSYADF.CXADED and</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>CSYADF.CXADE4, display:</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;3 &amp;6 &amp;1</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;4</CLTX60></AddressFormatRulesLine></CustomLines></AddressFormatRulesHead>
+          <AddressFormatRulesHead KFLD="05">
+            <CustomLines>
+              <CLTX60 Label="Texte"></CLTX60>
+              <AddressFormatRulesLine>
+                <CLTX60>Using the same codification as in fields CSYADF.CXADED and</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>CSYADF.CXADE4, display:</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;3 &amp;1</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;4</CLTX60></AddressFormatRulesLine></CustomLines></AddressFormatRulesHead>
+          <AddressFormatRulesHead KFLD="06">
+            <CustomLines>
+              <CLTX60 Label="Texte"></CLTX60>
+              <AddressFormatRulesLine>
+                <CLTX60>Using the same codification as in fields CSYADF.CXADED and</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>CSYADF.CXADE4, display:</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;3 &amp;1 &amp;2</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;4</CLTX60></AddressFormatRulesLine></CustomLines></AddressFormatRulesHead>
+          <AddressFormatRulesHead KFLD="BR">
+            <CustomLines>
+              <CLTX60 Label="Texte"></CLTX60>
+              <AddressFormatRulesLine>
+                <CLTX60>Using the same codification as in fields CSYADF.CXADED and</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>CSYADF.CXADE4, display:</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60></CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;3 &amp;1 &amp;6</CLTX60></AddressFormatRulesLine>
+              <AddressFormatRulesLine>
+                <CLTX60>&amp;4 &amp;5 &amp;7</CLTX60></AddressFormatRulesLine></CustomLines></AddressFormatRulesHead></CustomLines>
+        <Address Label="Destinat" Type="Consignee">
+          <VFCUNM>ACDIS FRANCE</VFCUNM>
+          <VFADR1>ZI TOULON EST</VFADR1>
+          <VFADR2>165 AVENUE CHARLES MARIE BRUN</VFADR2>
+          <VFADR3></VFADR3>
+          <VFADR4>LA GARDE</VFADR4>
+          <Custom>
+            <VFPONO Label="Code postal"></VFPONO>
+            <VFECAR Label="Région"></VFECAR>
+            <VFCSCD Label="Pays"></VFCSCD></Custom></Address>
+        <Address Label="Adresse interm" Type="Via">
+          <VFCUNM></VFCUNM>
+          <VFADR1></VFADR1>
+          <VFADR2></VFADR2>
+          <VFADR3></VFADR3>
+          <VFADR4></VFADR4></Address></DocumentHeader>
+      <Media>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB01</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB02</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB03</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB04</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB05</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB06</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB07</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB08</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB09</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB10</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB11</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB12</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB13</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer>
+        <Printer>
+          <PrinterAddress></PrinterAddress>
+          <PrinterModification></PrinterModification>
+          <PrinterName>FRHTAB14</PrinterName>
+          <NumberOfCopies>1</NumberOfCopies>
+          <Archive>false</Archive>
+          <ReportFileType>PDF</ReportFileType></Printer></Media></Document></DataArea></M3OutDocument>
