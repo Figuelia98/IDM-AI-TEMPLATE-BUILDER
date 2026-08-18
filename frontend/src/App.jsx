@@ -3,7 +3,7 @@ import { Download, FileCode2, FileType, ListTree, Loader2, RotateCcw, TablePrope
 import AiChat from './components/AiChat';
 import FieldTree from './components/FieldTree';
 import MappingPanel from './components/MappingPanel';
-import PreviewPanel from './components/PreviewPanel';
+import TemplatePanel from './components/TemplatePanel';
 import UploadPanel from './components/UploadPanel';
 import {
   aiEdit,
@@ -175,7 +175,7 @@ export default function App() {
             </div>
           ) : null}
           <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-            <PreviewPanel previewRevision={previewRevision} documentLoaded={!!document} />
+            <TemplatePanel previewRevision={previewRevision} documentLoaded={!!document} document={document} />
           </div>
           {showMapping ? (
             <div className="flex w-80 shrink-0 flex-col">

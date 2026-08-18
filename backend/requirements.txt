@@ -5,3 +5,4 @@ lxml>=5.1.0
 pydantic>=2.5.0
 openai>=1.0.0
 python-dotenv>=1.0.0
+docx2pdf>=0.1.8

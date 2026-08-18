@@ -5,6 +5,7 @@ from __future__ import annotations
 import io
 import logging
 import os
+import tempfile
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -199,6 +200,62 @@ async def preview_docx() -> StreamingResponse:
     return StreamingResponse(
         io.BytesIO(merged),
         media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    )
+
+
+@app.get("/api/template/docx")
+async def template_docx() -> StreamingResponse:
+    _require_document()
+    data = session_store.require()
+    return StreamingResponse(
+        io.BytesIO(data.template_docx),
+        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    )
+
+
+def _docx_bytes_to_pdf(docx_bytes: bytes) -> bytes:
+    from docx2pdf import convert
+    
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".docx") as temp_in:
+        temp_in.write(docx_bytes)
+        temp_in_path = temp_in.name
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_out:
+        temp_out_path = temp_out.name
+    
+    try:
+        convert(temp_in_path, temp_out_path)
+        with open(temp_out_path, "rb") as f:
+            pdf_bytes = f.read()
+        return pdf_bytes
+    except Exception as e:
+        logger.exception("PDF conversion failed")
+        raise HTTPException(status_code=500, detail=f"PDF conversion failed: {e}")
+    finally:
+        try:
+            os.remove(temp_in_path)
+            os.remove(temp_out_path)
+        except OSError:
+            pass
+
+
+@app.get("/api/preview/pdf")
+async def preview_pdf() -> StreamingResponse:
+    merged, _filename = _merged_docx()
+    pdf_bytes = _docx_bytes_to_pdf(merged)
+    return StreamingResponse(
+        io.BytesIO(pdf_bytes),
+        media_type="application/pdf",
+    )
+
+
+@app.get("/api/template/pdf")
+async def template_pdf() -> StreamingResponse:
+    _require_document()
+    data = session_store.require()
+    pdf_bytes = _docx_bytes_to_pdf(data.template_docx)
+    return StreamingResponse(
+        io.BytesIO(pdf_bytes),
+        media_type="application/pdf",
     )
 
 

@@ -59,8 +59,13 @@ export function undoEdit() {
   return request('/api/undo', { method: 'POST' });
 }
 
-export async function getPreviewDocx() {
-  const response = await request('/api/preview/docx');
+export async function getPreviewPdf() {
+  const response = await request('/api/preview/pdf');
+  return response.blob();
+}
+
+export async function getTemplatePdf() {
+  const response = await request('/api/template/pdf');
   return response.blob();
 }
 

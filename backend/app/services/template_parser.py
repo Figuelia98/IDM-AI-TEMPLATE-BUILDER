@@ -41,6 +41,7 @@ class ContentControl:
     part: str
     xpath: str | None = None
     script: str | None = None
+    is_legacy: bool = False  # True for MERGEFIELD/DOCVARIABLE field codes
 
 
 def load_template(filename: str, data: bytes) -> bytes:
@@ -77,6 +78,7 @@ def extract_content_controls(docx_bytes: bytes) -> list[ContentControl]:
         for part in list_word_xml_parts(docx_bytes):
             xml_bytes = zf.read(part)
             controls.extend(_controls_from_part(part, xml_bytes))
+            controls.extend(_legacy_fields_from_part(part, xml_bytes))
     return controls
 
 
@@ -188,6 +190,72 @@ def _controls_from_part(part: str, xml_bytes: bytes) -> list[ContentControl]:
                 part=part,
                 xpath=binding.get("xpath"),
                 script=binding.get("script"),
+            )
+        )
+    return controls
+
+
+def _legacy_fields_from_part(part: str, xml_bytes: bytes) -> list[ContentControl]:
+    """Extract legacy MERGEFIELD and DOCVARIABLE field codes from a Word XML part.
+
+    Word stores these as a sequence of runs:
+      <w:fldChar w:fldCharType="begin"/>
+      <w:instrText> MERGEFIELD FieldName \* MERGEFORMAT </w:instrText>
+      <w:fldChar w:fldCharType="end"/>
+
+    We walk all paragraphs and collect the instrText content for each field.
+    """
+    import re
+
+    parser = etree.XMLParser(huge_tree=True)
+    root = etree.fromstring(xml_bytes, parser)
+    controls: list[ContentControl] = []
+    # Gather all instrText elements that belong to a fldChar begin/end block
+    all_instr: list[str] = []
+    in_field = False
+    current_parts: list[str] = []
+    instr_index = 0
+
+    for elem in root.iter():
+        local = _local(elem.tag) if isinstance(elem.tag, str) else ""
+        if local == "fldChar":
+            fld_type = elem.get(f"{{{W_NS}}}fldCharType") or ""
+            if fld_type == "begin":
+                in_field = True
+                current_parts = []
+            elif fld_type == "end" and in_field:
+                in_field = False
+                full_instr = " ".join(current_parts).strip()
+                if full_instr:
+                    all_instr.append(full_instr)
+        elif local == "instrText" and in_field:
+            current_parts.append((elem.text or "").strip())
+
+    # Parse each instruction to extract field name and optional xpath hint
+    merge_re = re.compile(
+        r'(?:MERGEFIELD|DOCVARIABLE)\s+"?([^"\\*]+?)"?\s*(?:\\\*|$)',
+        re.IGNORECASE,
+    )
+    for idx, instr in enumerate(all_instr):
+        m = merge_re.search(instr)
+        if not m:
+            continue
+        field_name = m.group(1).strip()
+        if not field_name:
+            continue
+        # Build a synthetic control_id that won't clash with sdt ids
+        control_id = f"legacy:{part}:{idx}"
+        # A field name that looks like an xpath gets treated as one
+        xpath_hint = field_name if field_name.startswith("/") else None
+        controls.append(
+            ContentControl(
+                control_id=control_id,
+                alias=field_name,
+                tag=None,
+                text=field_name,
+                part=part,
+                xpath=xpath_hint,
+                is_legacy=True,
             )
         )
     return controls

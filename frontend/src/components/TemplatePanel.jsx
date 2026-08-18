@@ -1,79 +1,97 @@
-import { Eye, FileText, PencilLine } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Eye, EyeOff, Loader2 } from 'lucide-react';
+import { getPreviewPdf, getTemplatePdf } from '../api';
 
-const fieldRows = [
-  ['Document title', 'Transport Label'],
-  ['Customer', 'MMS485PF'],
-  ['Reference', 'Template #106'],
-  ['Date', '17 Aug 2026'],
-];
+export default function TemplatePanel({ document, previewRevision, documentLoaded }) {
+  const [status, setStatus] = useState('loading'); // 'loading', 'ready', 'error'
+  const [error, setError] = useState('');
+  const [viewMode, setViewMode] = useState('preview'); // 'template' or 'preview'
+  const [pdfUrl, setPdfUrl] = useState(null);
 
-export default function TemplatePanel({ onShowPreview }) {
+  useEffect(() => {
+    if (!documentLoaded) return;
+
+    let cancelled = false;
+    
+    setStatus('loading');
+    setError('');
+
+    const fetchPdf = viewMode === 'template' ? getTemplatePdf : getPreviewPdf;
+
+    fetchPdf()
+      .then((blob) => {
+        if (cancelled) return;
+        const url = URL.createObjectURL(blob);
+        setPdfUrl((prevUrl) => {
+          if (prevUrl) {
+            URL.revokeObjectURL(prevUrl);
+          }
+          return url;
+        });
+        setStatus('ready');
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        setStatus('error');
+        setError(err.message || `Could not render the ${viewMode} PDF`);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [previewRevision, documentLoaded, viewMode]);
+
+  const updating = status === 'loading';
+
   return (
-    <section className="panel h-full min-h-0 overflow-hidden">
-      <header className="flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-3">
+    <section className="panel h-full min-h-0 flex flex-col relative bg-slate-200">
+      <header className="flex items-center justify-between gap-3 border-b border-slate-200 bg-white px-4 py-3 shrink-0 shadow-sm z-10">
         <div>
-          <h3 className="text-sm font-semibold text-infor-navy">Template</h3>
-          <p className="mt-1 text-xs text-slate-500">Word-style editor surface for the document layout.</p>
+          <h3 className="text-sm font-semibold text-infor-navy">
+            {viewMode === 'template' ? 'Template Structure' : 'Filled Preview'}
+          </h3>
+          <p className="mt-1 text-xs text-slate-500">
+            {viewMode === 'template' 
+              ? 'Raw Word template in high-fidelity PDF.' 
+              : 'Word template with current XML values in high-fidelity PDF.'}
+          </p>
         </div>
-        <button type="button" className="btn-primary" onClick={onShowPreview}>
-          <Eye className="h-4 w-4" />
-          Show preview
+        <button 
+          type="button" 
+          className={viewMode === 'template' ? 'btn-primary' : 'btn-secondary'} 
+          onClick={() => setViewMode(v => v === 'template' ? 'preview' : 'template')}
+        >
+          {viewMode === 'template' ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+          {viewMode === 'template' ? 'Show filled preview' : 'Show raw template'}
         </button>
       </header>
 
-      <div className="flex min-h-0 flex-1 items-center justify-center overflow-auto bg-slate-100 p-4">
-        <div className="word-document-shell">
-          <div className="word-ruler" aria-hidden="true" />
-          <div className="word-page" role="document" aria-label="Word-like template page">
-            <div className="word-page-header">
-              <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
-                <FileText className="h-3.5 w-3.5" />
-                Document Layout
-              </div>
-              <div className="word-header-tag">Template</div>
-            </div>
-
-            <div className="word-page-content">
-              <div className="word-block word-block-title">Transport Label</div>
-              <div className="word-block word-block-subtitle">MMS485PF</div>
-
-              <div className="word-form-grid">
-                {fieldRows.map(([label, value]) => (
-                  <div key={label} className="word-form-row">
-                    <span className="word-form-label">{label}</span>
-                    <span className="word-form-value">{value}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="word-block word-block-body">
-                <div className="word-paragraph-line" />
-                <div className="word-paragraph-line short" />
-                <div className="word-paragraph-line" />
-                <div className="word-paragraph-line" />
-                <div className="word-paragraph-line medium" />
-              </div>
-
-              <div className="word-block word-block-table">
-                <div className="word-table-head">
-                  <span>Code</span>
-                  <span>Description</span>
-                  <span>Value</span>
-                </div>
-                <div className="word-table-row">
-                  <span>TR-01</span>
-                  <span>Shipment reference</span>
-                  <span>__FIELD__</span>
-                </div>
-                <div className="word-table-row">
-                  <span>TR-02</span>
-                  <span>Customer name</span>
-                  <span>__FIELD__</span>
-                </div>
-              </div>
+      <div className="relative min-h-0 flex-1 overflow-hidden">
+        {updating ? (
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-100/50 backdrop-blur-sm">
+            <Loader2 className="h-8 w-8 animate-spin text-infor-navy mb-4" />
+            <span className="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-slate-700 shadow-sm">
+              Rendering {viewMode} to PDF...
+            </span>
+          </div>
+        ) : null}
+        
+        {status === 'error' ? (
+          <div className="absolute inset-0 flex items-center justify-center p-4">
+            <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg max-w-md shadow-sm">
+              <h4 className="font-semibold mb-1">Rendering Failed</h4>
+              <p className="text-sm">{error}</p>
             </div>
           </div>
-        </div>
+        ) : null}
+        
+        {pdfUrl && status !== 'error' && (
+          <embed 
+            src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`} 
+            type="application/pdf" 
+            className={`w-full h-full transition-opacity duration-300 ${updating ? 'opacity-50' : 'opacity-100'}`}
+          />
+        )}
       </div>
     </section>
   );
