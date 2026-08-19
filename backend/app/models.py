@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 
@@ -57,6 +59,8 @@ class FieldUpdateRequest(BaseModel):
 
 class AiEditRequest(BaseModel):
     instruction: str
+    mode: Literal["ask", "agent", "plan", "debug"] = "agent"
+    useRules: bool = True
 
 
 class AiEditResponse(BaseModel):

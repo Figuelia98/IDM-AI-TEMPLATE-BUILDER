@@ -47,11 +47,11 @@ export function updateField(xpath, value) {
   });
 }
 
-export function aiEdit(instruction) {
+export function aiEdit(instruction, mode = "agent", useRules = true) {
   return request('/api/ai-edit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ instruction }),
+    body: JSON.stringify({ instruction, mode, useRules }),
   });
 }
 

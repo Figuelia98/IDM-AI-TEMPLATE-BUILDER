@@ -5,10 +5,11 @@ An intelligent, AI-powered template builder designed to streamline the creation 
 ## 🎯 Features
 
 - **AI-Powered Template Editing**: Leverage AI assistance to create and modify templates efficiently
+- **Multi-Mode AI Chat**: Four specialized chat modes (Ask, Agent, Plan, Debug) for different workflows
 - **Template Mapping**: Map fields between different template structures with ease
 - **Template Merging**: Combine multiple templates into a single unified template
 - **Field Tree Visualization**: Navigate and visualize complex field hierarchies
-- **Interactive Chat Interface**: Get AI assistance through an intuitive chat panel
+- **Interactive Chat Interface**: Get AI assistance through an intuitive chat panel with contextual hints
 - **XML Template Support**: Work with XML-based template formats
 - **Responsive UI**: Modern, mobile-friendly interface built with React and Tailwind CSS
 
@@ -31,7 +32,7 @@ An intelligent, AI-powered template builder designed to streamline the creation 
 - **Location**: `/frontend`
 - **Key Components**:
   - `App.jsx`: Main application container
-  - `AiChat.jsx`: AI chat interface
+  - `AiChat.jsx`: AI chat interface with 4 modes (Ask, Agent, Plan, Debug)
   - `FieldTree.jsx`: Field hierarchy visualization
   - `MappingPanel.jsx`: Template field mapping interface
   - `TemplatePanel.jsx`: Template management panel
@@ -103,6 +104,47 @@ The frontend will start on `http://localhost:5173` (default Vite port).
 5. **Map Fields**: Use the Mapping Panel to map fields between templates
 6. **Merge Templates**: Combine multiple templates using the merge functionality
 7. **Download**: Export your modified templates in XML format
+
+### AI Chat Modes
+
+The AI Chat interface supports four distinct modes to help you work with templates:
+
+#### 🤖 **Ask Mode** (Default)
+Ask questions about your template and get AI-powered answers.
+- **Purpose**: Learn about template structure, field definitions, and validation rules
+- **Example queries**:
+  - "What fields are in this template?"
+  - "What is the maximum length of the SSCC field?"
+  - "Which fields are required?"
+  - "Explain the purpose of this field"
+
+#### 🤖 **Agent Mode**
+Let AI directly modify and update your template based on your instructions.
+- **Purpose**: Quickly make changes to templates without manual editing
+- **Example queries**:
+  - "Change the consignee to ACME France"
+  - "Set SSCC to 312345601000030999"
+  - "Add a new shipment ID field"
+  - "Remove the deprecated tracking field"
+
+#### 📋 **Plan Mode**
+Create a structured plan for complex template modifications.
+- **Purpose**: Break down complex changes into actionable steps
+- **Example queries**:
+  - "Plan how to add a new shipment field"
+  - "Create a step-by-step plan to restructure the template"
+  - "How should I merge these two templates?"
+  - "Plan the migration from v1 to v2 format"
+
+#### 🔍 **Debug Mode**
+Diagnose and analyze issues with your template.
+- **Purpose**: Validate templates and identify problems
+- **Example queries**:
+  - "Why is this field invalid?"
+  - "Check for missing required fields"
+  - "Validate the template structure"
+  - "Find XML parsing errors"
+  - "What's the root cause of this validation error?"
 
 ## 📁 Project Structure
 

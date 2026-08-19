@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Download, FileCode2, FileType, ListTree, Loader2, RotateCcw, TableProperties } from 'lucide-react';
+import { Download, FileCode2, FileType, ListTree, Loader2, RotateCcw, TableProperties, BookOpen } from 'lucide-react';
 import AiChat from './components/AiChat';
 import FieldTree from './components/FieldTree';
 import MappingPanel from './components/MappingPanel';
+import RulesPanel from './components/RulesPanel';
 import TemplatePanel from './components/TemplatePanel';
 import UploadPanel from './components/UploadPanel';
 import {
@@ -35,6 +36,8 @@ export default function App() {
   const [error, setError] = useState('');
   const [showFields, setShowFields] = useState(true);
   const [showMapping, setShowMapping] = useState(false);
+  const [showRules, setShowRules] = useState(false);
+  const [useRules, setUseRules] = useState(true);
   const [previewRevision, setPreviewRevision] = useState(0);
 
   useEffect(() => {
@@ -72,12 +75,12 @@ export default function App() {
     await run(() => updateField(xpath, value));
   }
 
-  async function handleAi(instruction) {
+  async function handleAi(instruction, mode = 'agent') {
     setMessages((current) => [...current, newMessage('user', instruction)]);
     setBusy(true);
     setError('');
     try {
-      const result = await aiEdit(instruction);
+      const result = await aiEdit(instruction, mode, useRules);
       applyDocument(result.document);
       setMessages((current) => [
         ...current,
@@ -135,6 +138,10 @@ export default function App() {
                 <TableProperties className="h-4 w-4" />
                 Mapping
               </button>
+              <button type="button" className={toggleClass(showRules)} onClick={() => setShowRules((value) => !value)}>
+                <BookOpen className="h-4 w-4" />
+                Rules
+              </button>
               <button type="button" className="btn-secondary !bg-white/10 !text-white !border-white/20" onClick={handleNewFiles}>
                 <RotateCcw className="h-4 w-4" />
                 New files
@@ -180,6 +187,15 @@ export default function App() {
           {showMapping ? (
             <div className="flex w-80 shrink-0 flex-col">
               <MappingPanel document={document} />
+            </div>
+          ) : null}
+          {showRules ? (
+            <div className="flex w-80 shrink-0 flex-col">
+              <RulesPanel 
+                useRules={useRules} 
+                onToggleRules={setUseRules}
+                onAddRule={(rule) => {}}
+              />
             </div>
           ) : null}
           <div className="flex w-80 shrink-0 flex-col">

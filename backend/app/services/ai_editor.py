@@ -12,6 +12,7 @@ from typing import Any
 from openai import OpenAI
 
 from app.models import FieldNode, FieldPatch
+from app.rules import ChatMode, get_system_prompt
 from app.services.structure_parser import flatten_leaves
 
 logger = logging.getLogger(__name__)
@@ -19,27 +20,6 @@ logger = logging.getLogger(__name__)
 DEFAULT_MODEL = "gpt-4o-mini"
 ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
 MAX_FIELDS = 180
-
-SYSTEM_INSTRUCTION = """You edit Infor M3 IDM XML documents (M3OutDocument).
-
-You receive a field inventory (xpath, name, label, value) and a user instruction in natural language.
-Return ONLY a JSON object (no markdown fences):
-{
-  "summary": "short description of what changed",
-  "patches": [
-    {"xpath": "<exact xpath from inventory>", "value": "<new text value>"}
-  ]
-}
-
-Rules:
-- Only change values. Never invent new element names or a new root.
-- Use the exact xpath string from the inventory.
-- Prefer matching by Label (French or English) then by field name (UDDLIX, ROPANR, etc.).
-- Duplicate names like ZZLABL are distinguished by Label and xpath predicates.
-- If the user asks to change an address or consignee, update every related field that should stay consistent (name, address lines, postal code, country) when those fields exist.
-- If nothing should change, return an empty patches array and explain why in summary.
-- Do not include patches for values that are already correct.
-"""
 
 
 def openai_configured() -> bool:
@@ -75,8 +55,22 @@ def get_openai_status() -> dict[str, Any]:
 def propose_patches(
     tree: FieldNode,
     instruction: str,
+    mode: ChatMode = "agent",
+    use_rules: bool = True,
     extra_fields: list[dict[str, str | None]] | None = None,
 ) -> tuple[str, list[FieldPatch]]:
+    """Generate patches for template edits using AI.
+    
+    Args:
+        tree: Field tree structure
+        instruction: User's natural language instruction
+        mode: Chat mode (ask, agent, plan, debug)
+        use_rules: Whether to apply AI rules (True = use rules, False = skip rules)
+        extra_fields: Additional fields to include in inventory
+        
+    Returns:
+        Tuple of (summary, patches)
+    """
     instruction = (instruction or "").strip()
     if not instruction:
         raise ValueError("Instruction is empty")
@@ -84,8 +78,11 @@ def propose_patches(
     if not openai_configured():
         return _heuristic_patches(inventory, instruction)
 
+    system_prompt = get_system_prompt(mode, use_rules)
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY", "").strip())
     payload = {
+        "mode": mode,
+        "useRules": use_rules,
         "instruction": instruction,
         "fields": inventory,
     }
@@ -94,7 +91,7 @@ def propose_patches(
         temperature=0.1,
         response_format={"type": "json_object"},
         messages=[
-            {"role": "system", "content": SYSTEM_INSTRUCTION},
+            {"role": "system", "content": system_prompt},
             {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
         ],
     )

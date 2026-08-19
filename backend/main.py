@@ -136,7 +136,7 @@ async def ai_edit(body: AiEditRequest) -> AiEditResponse:
     state = _require_document()
     extra_fields = _binding_fields(state)
     try:
-        summary, patches = propose_patches(state.tree, body.instruction, extra_fields)
+        summary, patches = propose_patches(state.tree, body.instruction, body.mode, body.useRules, extra_fields)
     except RuntimeError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
     except ValueError as exc:
